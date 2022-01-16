@@ -1,39 +1,22 @@
 pipeline {
          agent any
-         stages {
-                 stage('2') {
-                 steps {
-                     echo 'Hi, itisgood. Starting to build the App.'
-                 }
-                 }
-                 stage('Test') {
-                 steps {
-                    input('Do you want to proceed?')
-                 }
-                 }
-		 stage('Deploy start ') {
-                      steps {
-                                echo "Start the deploy .."
-                           }
-                           }
-                 stage('Deploying now') {
-                            agent {
-                                    docker {
-                                            reuseNode true
-                                            image ‘nginx’
-                                           }
-                                    }
+  stage('Run') {
+    steps {
+        echo "Run docker image"
+        script {
+            pipelineContext.dockerContainer = pipelineContext.dockerImage.run()
+        }
+    }
+  }
+  post {
+    always {
+        echo "Stop Docker image"
+        script {
+            if (pipelineContext && pipelineContext.dockerContainer) {
+                pipelineContext.dockerContainer.stop()
+            }
+        }
+    }
+  }
 
-                              steps {
-                                echo "Docker Created"
-                              }
-                           }
-                           
-                 stage('Prod') {
-                     steps {
-                                echo "App is Prod Ready"
-                              }
-
-              }
-}
 }
