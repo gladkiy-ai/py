@@ -14,7 +14,7 @@ pipeline {
         steps {
     	catchError {
       	   script {
-        	      docker.build("python-for-test", "-f Dockerfile .")
+        	      docker.build("python-for-test", ".")
       	     }
           }
        }
