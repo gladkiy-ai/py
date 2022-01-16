@@ -11,14 +11,12 @@ pipeline {
                     input('Do you want to proceed?')
                  }
                  }
-                 stage('Deploy') {
-                 parallel {
-                            stage('Deploy start ') {
-                           steps {
+		 stage('Deploy start ') {
+                      steps {
                                 echo "Start the deploy .."
                            }
                            }
-                            stage('Deploying now') {
+                 stage('Deploying now') {
                             agent {
                                     docker {
                                             reuseNode true
@@ -30,8 +28,7 @@ pipeline {
                                 echo "Docker Created"
                               }
                            }
-                           }
-                           }
+                           
                  stage('Prod') {
                      steps {
                                 echo "App is Prod Ready"
