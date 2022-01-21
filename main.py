@@ -2,9 +2,10 @@ from pprint import pprint
 
 def concatGraph(graph_1, graph_2):
     graph_out ={}
-    graph_out.update(graph_1)
-    graph_out.update(graph_2)
-    return graph_out
+    #добавить поочереди key из первого графа1
+    #проверять есть ли такой key в value,
+    #если да то добавить цепочку из графа2
+    return graph_1
 
 def isOrder(graph):
     for node in graph.keys():
@@ -107,7 +108,7 @@ if __name__ == '__main__':
     isCyclic(graph2)
     print('isOrder graph2---------------------------')
     isOrder(graph2)
-    print('Concat graph1 + graph 2---------------------------')
-    graph3 = concatGraph(graph1, graph2)
-    pprint(graph3)
-    isOrder(graph3)
+    # print('Concat graph1 + graph 2---------------------------')
+    # graph3 = concatGraph(graph1, graph2)
+    # pprint(graph3)
+    # isOrder(graph3)
