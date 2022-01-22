@@ -92,8 +92,7 @@ if __name__ == '__main__':
 
     graph2 = {b01: b02,
              b02: b03,
-             b04: [a07, b10],
-             a07: [b05, b07],
+             b04: b05,
              b05: b06,
              b06: b07,
              b07: b08,
@@ -112,4 +111,3 @@ if __name__ == '__main__':
     # graph3 = concatGraph(graph1, graph2)
     # pprint(graph3)
     # isOrder(graph3)
-
