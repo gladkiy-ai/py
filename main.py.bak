@@ -1,6 +1,5 @@
 from pprint import pprint
 
-
 def concatGraph(graph_1, graph_2):
     graph_out ={}
     #добавить поочереди key из первого графа1
